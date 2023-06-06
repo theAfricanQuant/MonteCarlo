@@ -415,7 +415,6 @@ class MonteCarlo:
             return put
         else:
             print("please enter the option type: (c/p)")
-        pass
 
     def MCPricer(self, option_type='c', isAmerican=False):
         price_matrix = self.price_matrix
@@ -571,8 +570,7 @@ class MonteCarlo:
         # sample variance
         sample_var = np.var(self.value_results, ddof=1)
         std_estimate = np.sqrt(sample_var)
-        standard_err = std_estimate / np.sqrt(self.n_trials)
-        return standard_err
+        return std_estimate / np.sqrt(self.n_trials)
 
     def pricing(self, option_type='c', func_list=[lambda x: x ** 0, lambda x: x]):
         OHMC_price = self.OHMCPricer(option_type=option_type, func_list=func_list)
